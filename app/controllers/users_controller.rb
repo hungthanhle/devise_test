@@ -5,7 +5,11 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = {"email": "not found"}
     end
-    render json: {email: @user[:email]}
+    if can? :edit, @user
+      render json: {email: @user[:email]}
+    else
+      render html: "not permission"
+    end
   end
 
   def index

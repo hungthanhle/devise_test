@@ -28,5 +28,16 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
+
+    # CanCanCan automatically adds some convenient aliases for mapping the controller actions
+    # read: [:index, :show]
+    # create: [:new, :create]
+    # update: [:edit, :update]
+    # destroy: [:destroy]
+
+    # can :update, Article, user: user
+    # can :update, User, user: user
+    can :update, User, :id => user.id
+
   end
 end
