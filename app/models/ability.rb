@@ -45,5 +45,10 @@ class Ability
     return unless user.role == "admin"
     can :manage, User
     # can :manage, :all
+
+    if user.role == "admin"
+      can :admin, StaticPagesController 
+    end
+    
   end
 end

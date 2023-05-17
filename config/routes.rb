@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "static_pages#home"
   get '/help', to: "static_pages#help"
+  get '/admin', to: "static_pages#admin"
   # devise_scope :user do
   #   get 'sign_in', to: 'devise/sessions#new'
   # end
