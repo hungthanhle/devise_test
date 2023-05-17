@@ -35,9 +35,15 @@ class Ability
     # update: [:edit, :update]
     # destroy: [:destroy]
 
-    # can :update, Article, user: user
-    # can :update, User, user: user
-    can :update, User, :id => user.id
+    return unless user.present?
+    can [:read, :update, :destroy], User, :id => user.id
+    # user = current_user
+    # :id = @user.id
 
+    #https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
+    # return unless user.admin? 
+    return unless user.role == "admin"
+    can :manage, User
+    # can :manage, :all
   end
 end

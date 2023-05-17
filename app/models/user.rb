@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   delegate :can?, :cannot?, to: :ability
 
+  enum role: { user: 0, admin: 1 }
+
   def ability
     @ability ||= Ability.new(self)
   end

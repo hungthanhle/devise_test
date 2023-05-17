@@ -16,8 +16,9 @@
 
     <% if user_signed_in? %>
       <a href="/">Home</a>
-      <a href="/helps">Help</a>
-      <%= link_to "Sign out", "auth/logout ", method: :delete %>
+      <a href="/help">Help</a>
+      <a href="/users">Users</a>
+      <%= link_to "Sign out", "/auth/logout ", method: :delete %>
     <% else %>
       <a href="/auth/login">Sign in</a>
     <% end %>
