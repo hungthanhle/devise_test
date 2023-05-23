@@ -32,6 +32,10 @@ class StaticPagesController < ApplicationController
     # response = http.request(request)
 
     token = auth_hash.credentials.token
+    # debugger
+    # client.chat_postMessage(channel: '#general', text: "client.chat_postMessage(channel: '#general', text: 'teamrocket101085', as_user: true)", as_user: true)
+    # Slack::Web::Api::Errors::MissingScope (missing_scope)
+    
     # conn = Faraday.new(url: 'https://jsonplaceholder.typicode.com/todos/1')
     response = Faraday.get('https://slack.com/api/auth.test?pretty=1', nil, { Authorization: "Bearer #{token}"})
     # response.body
