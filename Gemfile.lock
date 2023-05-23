@@ -271,11 +271,13 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  faraday (~> 2.7)
   figaro
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)
   net-http
+  oauth2 (>= 1.4.4)
   omniauth-slack
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
