@@ -18,8 +18,6 @@
       <a href="/">Home</a>
       <a href="/helps">Help</a>
       <%= link_to "Sign out", "auth/logout ", method: :delete %>
-    <% else %>
-      <a href="/auth/slack">Connect App to Slack</a>
     <% end %>
 
     <%= yield %>

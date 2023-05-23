@@ -1,0 +1,9 @@
+<%# Do đó mới devisetoke_auth %>
+
+<%= form_for :session, url: user_session_path do |f| %> 
+  <%= f.email_field :email%>
+  <%= f.password_field :password%>
+  <%= f.submit'login'%>
+  <a href="/auth/slack">Connect App to Slack</a>
+<%end%>
+
