@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "static_pages#home"
 
-  get '/auth/slack/callback', to: 'static_pages#slack'
+  # get '/auth/slack/callback', to: 'sessions#slack'
   
-  # devise_scope :user do
-  #   get 'sign_in', to: 'devise/sessions#new'
-  # end
+  devise_scope :user do
+    # get 'sign_in', to: 'devise/sessions#new'
+    get '/auth/slack/callback', to: 'sessions#slack'
+  end
 end
