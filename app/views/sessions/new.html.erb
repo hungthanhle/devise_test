@@ -1,11 +1,2 @@
-<br/>
-LOGIN
-<%= form_for :user, url: user_session_path do |f| %> 
-  Email: <%= f.email_field :email%>
-  <br />
-  Password: <%= f.password_field :password%>
-  <br />
-  <%= f.submit'login'%>
-  <br />
-  <a href="/auth/slack">Connect App to Slack</a>
-<%end%>
+<h1>CONFIG APP TO SPECIFIC CHANNEL</h1>
+<a href=<%= "https://slack.com/oauth/v2/authorize?scope=incoming-webhook&client_id=#{ENV['SLACK_CLIENT_DEF_ID']}"%>>Connect App to Slack</a>

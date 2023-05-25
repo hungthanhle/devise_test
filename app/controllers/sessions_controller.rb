@@ -1,27 +1,27 @@
 class SessionsController < Devise::SessionsController
   # https://github.com/heartcombo/devise/blob/main/app/controllers/devise/sessions_controller.rb
   def slack
-    # auth_hash = request.env['omniauth.auth']
+    # debugger
+    # auth_hash = request.env['omniauth.auth'] <- định vọc biến request
     # token = auth_hash.credentials.token
-    # response = Faraday.get('https://slack.com/api/auth.test?pretty=1', nil, { Authorization: "Bearer #{token}"})
-    # # response.body
-    # result = JSON.parse(response.body)
-    # user_id = result["user_id"]
-    # user = User.find_by(user_app_slack_id: user_id)
 
-    # # create({"user" => user}) #fail
-    # # resource = user #fail
+    # body = '{"client_id": ' + "#{ENV['SLACK_CLIENT_DEF_ID']} ," + '"client_secret":' + "#{ENV['SLACK_CLIENT_DEF_SECRET']}," + '"code":' + "#{params[:code]}" + '}' <- this is string
+    # body = {
+    #   client_id: ENV['SLACK_CLIENT_DEF_ID'],
+    #   client_secret: ENV['SLACK_CLIENT_DEF_SECRET'],
+    #   code: params[:code]
+    # }
+    # body = body.to_json
+    # response = Faraday.post('https://slack.com/api/oauth.v2.access', body, "Content-Type" => "application/json; charset=utf-8")
+    
+    # response = Faraday.get("https://slack.com/api/oauth.v2.exchange?client_id=#{ENV['SLACK_CLIENT_DEF_ID']}&client_secret=#{ENV['SLACK_CLIENT_DEF_SECRET']}&token=#{ENV['SLACK_API_DEF_TOKEN']}")
+    response = Faraday.get("https://slack.com/api/oauth.v2.access?client_id=#{ENV['SLACK_CLIENT_DEF_ID']}&client_secret=#{ENV['SLACK_CLIENT_DEF_SECRET']}&code=#{params[:code]}")
+    
+    result = JSON.parse(response.body)
+    # ok = result["ok"]
 
-    # # self.resource = warden.authenticate!(auth_options)
-    # self.resource = user
-    # set_flash_message!(:notice, :signed_in)
-    # # debugger
-    # sign_in(resource_name, resource)
-    # if !session[:return_to].blank?
-    #   redirect_to session[:return_to]
-    #   session[:return_to] = nil
-    # else
-    #   redirect_to root_path
-    # end
+    # debugger
+    incoming_webhook = result["incoming_webhook"]["url"]
+    render json: {slack: result.to_s, incoming_webhook: incoming_webhook}
   end
 end

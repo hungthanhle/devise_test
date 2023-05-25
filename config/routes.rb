@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   
   devise_scope :user do
     # get 'sign_in', to: 'devise/sessions#new'
-    # get '/auth/slack/callback', to: 'sessions#slack'
+    get '/auth/slack/callback', to: 'sessions#slack'
   end
 end
