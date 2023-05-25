@@ -1,0 +1,11 @@
+<br/>
+LOGIN
+<%= form_for :user, url: user_session_path do |f| %> 
+  Email: <%= f.email_field :email%>
+  <br />
+  Password: <%= f.password_field :password%>
+  <br />
+  <%= f.submit'login'%>
+  <br />
+  <a href="/auth/slack">Connect App to Slack</a>
+<%end%>
