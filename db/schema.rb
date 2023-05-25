@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_16_145904) do
+ActiveRecord::Schema.define(version: 2023_05_25_080229) do
+
+  create_table "slack_apps", force: :cascade do |t|
+    t.string "app_name"
+    t.string "app_id"
+    t.text "access_token"
+    t.text "refresh_token"
+    t.text "incoming_webhook"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "channel_name"
+    t.string "channel_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_05_16_145904) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_app_slack_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
